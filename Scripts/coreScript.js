@@ -244,7 +244,9 @@ function buyTrap(obj) {
 		trapNum = trapNum + 1;
 		trapPrice = Math.ceil(trapPrice * 1.15);
 		document.getElementById('credits').innerHTML = credits + " " + currency;
-		document.getElementById('buyRopeOne').style.display = 'block';
+		if (trapNum == 1) {
+			document.getElementById('buyRopeOne').style.display = 'block';
+		}
 	}
 }
 function buyRopeOne(obj) {
