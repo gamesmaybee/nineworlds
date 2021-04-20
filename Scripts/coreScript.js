@@ -246,6 +246,8 @@ function buyTrap(obj) {
 		document.getElementById('credits').innerHTML = credits + " " + currency;
 		if (trapNum == 1) {
 			document.getElementById('buyRopeOne').style.display = 'block';
+		} else if (trapNum > 1) {
+			document.getElementById('buyRopeOne').style.display = 'none';
 		}
 	}
 }
