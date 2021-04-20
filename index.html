@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>The 9 Worlds</title>
+	<!--<link rel="icon" type="image/png" href="-">-->
+	<link rel="stylesheet" type="text/css" href="Styles/coreStyle.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div class="top">The Nine Worlds <i style="font-size: 13px; margin-left: 8px;">by Regular Pyrates</i><div class="buttons"><button onclick="saveGame()">Save</button><button>Reset</button></div></div>
+	<div class="content">
+		<div class="side">
+			<div id="logs"></div>
+		</div>
+
+
+		<div class="main">
+			<div class="tab">
+				<button class="tablinks" onclick="openTab(event, 'main')" id="defaultOpen">Main</button>
+				<button class="tablinks" onclick="openTab(event, 'upgrades')" id="upgradesButton" style="visibility: hidden;">Upgrades</button>
+				<button class="tablinks" onclick="openTab(event, 'buildings')" style="visibility: hidden;" id="buildingsButton">Buildings</button>
+				<button class="tablinks" onclick="openTab(event, 'tools')" style="visibility: hidden;" id="toolsButton">Tools</button>
+			</div>
+
+			
+			<div id="main" class="tabcontent">
+				<button class="main-button" onmouseover="changeText(this, 'Gather Resources', '14px')" onmouseout="changeText(this, 'HUNT', '16px')" onclick="hunting()">HUNT</button>
+				<br>
+
+				<div class="main-div" onmouseover="showButtonMeat(this)" onmouseout=" hideButtonMeat(this)" id="sellMeat">
+					<div class="name">SELL MEAT</div>
+					<div class="xOne" style="display: none;" onclick="sellOneMeat()">x1</div>
+					<div class="xTen" style="display: none;" onclick="sellTenMeat()">x10</div>
+					<div class="all" style="display: none;" onclick="sellAllMeat()">All</div>
+				</div>
+
+				<div class="main-div" onmouseover="showButtonLeather(this)" onmouseout="hideButtonLeather(this)" onclick="sell()" id="sellLeather">
+					<div class="nameLeather" style="align-self: center;">SELL LEATHER</div>
+					<div class="xOneLeather" style="display: none;" onclick="sellOneLeather()">x1</div>
+					<div class="xTenLeather" style="display: none;" onclick="sellTenLeather()">x10</div>
+					<div class="allLeather" style="display: none;" onclick="sellAllLeather()">All</div>
+				</div>
+
+				<div class="main-div" onmouseover="showButtonBone(this)" onmouseout="hideButtonBone(this)" onclick="sell()" id="sellBones">
+					<div class="nameBone">SELL BONES</div>
+					<div class="xOneBone" style="display: none;" onclick="sellOneBone()">x1</div>
+					<div class="xTenBone" style="display: none;" onclick="sellTenBone()">x10</div>
+					<div class="allBone" style="display: none;" onclick="sellAllBone()">All</div>
+				</div>
+			</div>
+
+			<div id="upgrades" class="tabcontent">
+				<button class="main-button" onmouseover="changeText(this, '15 Sceattas', '14px')" onmouseout="changeText(this, 'SWORD', '16px')" onclick="buySword(this)" id="buySword">SWORD</button>
+			</div>
+
+			<div id="buildings" class="tabcontent">
+				<button>Hunter</button>
+			</div>
+
+			<div id="tools" class="tabcontent">
+				<button>Sword</button>
+			</div>
+		</div>
+
+
+		<div class="side">
+			<table id="resTable" style="visibility: hidden;">
+				<tr id="balanceRow" style="display: none;">
+					<td class="left-cell">Balance</td>
+					<td class="right-cell" id="credits"></td>
+				</tr>
+				<tr id="meatRow" style="display: none;">
+					<td class="left-cell">Meat</td>
+					<td class="right-cell" id="meat"></td>
+				</tr>
+				<tr id="leatherRow" style="display: none;">
+					<td class="left-cell">Leather</td>
+					<td class="right-cell" id="leather"></td>
+				</tr>
+				<tr id="boneRow" style="display: none;">
+					<td class="left-cell">Bones</td>
+					<td class="right-cell" id="bones"></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<div class="bottom"><a href="https://www.reddit.com/">Reddit</a> | <a href="https://discord.com/">Discord</a></div>
+
+
+	<script type="text/javascript" src="Scripts/coreScript.js"></script>
+</body>
+</html>
