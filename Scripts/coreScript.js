@@ -423,15 +423,21 @@ setInterval(function() {
 
 function levelOne() {
 	document.getElementById('sellMeat').style.visibility = 'visible';
+	document.getElementById('balanceRow').style.display = 'block';
 
 	level = 1;
 }
 function levelTwo () {
+	document.getElementById('sellMeat').style.visibility = 'visible';
+	document.getElementById('balanceRow').style.display = 'block';
 	document.getElementById('upgradesButton').style.visibility = 'visible';
 
 	level = 2;
 }
 function levelThree() {
+	document.getElementById('sellMeat').style.visibility = 'visible';
+	document.getElementById('balanceRow').style.display = 'block';
+	document.getElementById('upgradesButton').style.visibility = 'visible';
 	document.getElementById('sellLeather').style.visibility = 'visible';
 	document.getElementById('sellBones').style.visibility = 'visible';
 	document.getElementById('leatherRow').style.display = 'block';
