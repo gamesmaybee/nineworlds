@@ -381,7 +381,7 @@ function sellAllBone() {
 
 
 function loadGame() {
-	var savedGame = JSON.parse(localStorage).getItem('gameSave');
+	var savedGame = JSON.parse(localStorage.getItem('gameSave'));
 	if (typeof savedGame.credits !== "undefined") {credits = savedGame.credits;};
 	if (typeof savedGame.leather !== "undefined") {leather = savedGame.leather;};
 	if (typeof savedGame.meat !== "undefined") {meat = savedGame.meat;};
