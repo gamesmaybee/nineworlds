@@ -5,6 +5,7 @@ function changeText(obj, text, size) {
 
 document.getElementById('sellMeat').style.visibility = 'hidden';
 document.getElementById('sellLeather').style.visibility = 'hidden';
+document.getElementById('sellFur').style.visibility = 'hidden';
 document.getElementById('sellBones').style.visibility = 'hidden';
 
 function hideButtonMeat(obj) {
@@ -37,6 +38,22 @@ function showButtonLeather(obj) {
 	obj.querySelector('.xTenLeather').style.display = 'inline-block';
 	obj.querySelector('.allLeather').style.display = 'inline-block';
 	obj.querySelector('.nameLeather').style.display = 'none';
+}
+
+function hideButtonFur(obj) {
+	var obj = obj;
+	obj.querySelector('.xOneFur').style.display = 'none';
+	obj.querySelector('.xTenFur').style.display = 'none';
+	obj.querySelector('.allFur').style.display = 'none';
+	obj.querySelector('.nameFur').style.display = 'block';
+}
+
+function showButtonFur(obj) {
+	var obj = obj;
+	obj.querySelector('.xOneFur').style.display = 'inline-block';
+	obj.querySelector('.xTenFur').style.display = 'inline-block';
+	obj.querySelector('.allFur').style.display = 'inline-block';
+	obj.querySelector('.nameFur').style.display = 'none';
 }
 
 function hideButtonBone(obj) {
@@ -107,8 +124,9 @@ function myFunction() {
 
 var credits = 0;
 
-var leather = 0;
 var meat = 0;
+var leather = 0;
+var fur = 0;
 var bones = 0;
 
 var currency = 'Sceattas';
@@ -120,6 +138,7 @@ var level = 0;
 
 document.getElementById('credits').innerHTML = credits + " " + currency;
 document.getElementById('leather').innerHTML = leather;
+document.getElementById('fur').innerHTML = fur;
 document.getElementById('meat').innerHTML = meat;
 document.getElementById('bones').innerHTML = bones;
 
@@ -133,10 +152,12 @@ function hunting() {
 			if (level !== 3) {
 				var meatGathered = Math.floor(Math.random() * 4);
 				var leatherGathered = 0;
+				var furGathered = 0;
 				var bonesGathered = 0;
 			} else if (level == 3) {
 				var meatGathered = Math.floor(Math.random() * 4);
 				var leatherGathered = Math.floor(Math.random() * 3);
+				var furGathered = Math.floor(Math.random() * 3);
 				var bonesGathered = Math.floor(Math.random() * 3);
 				if (bonesGathered != 1) {
 					bonesGathered = 0;
@@ -146,12 +167,14 @@ function hunting() {
 
 			meat = meat + meatGathered;
 			leather = leather + leatherGathered;
+			fur = fur + furGathered;
 			bones = bones + bonesGathered;
 			document.getElementById('meat').innerHTML = meat;
 			document.getElementById('leather').innerHTML = leather;
+			document.getElementById('fur').innerHTML = fur;
 			document.getElementById('bones').innerHTML = bones;
 			hunt = 1;
-			if (meatGathered < 1 && leatherGathered < 1 && bonesGathered < 1) {
+			if (meatGathered < 1 && leatherGathered < 1 && bonesGathered < 1 && furGathered < 1) {
 				document.getElementById('resTable').style.visibility = 'visible';
 				document.getElementById('meatRow').style.display = 'block';
 				var ranLog = Math.floor(Math.random() * 3) + 1;
@@ -164,7 +187,7 @@ function hunting() {
 				if (ranLog == 3) {
 					addLog("A rabbit was too cute to kill, therefore you gathered no resources");
 				}
-			} else if (meatGathered > 0 || leatherGathered > 0 || bonesGathered > 0){
+			} else if (meatGathered > 0 || leatherGathered > 0 || bonesGathered > 0 || furGathered > 0){
 				document.getElementById('resTable').style.visibility = 'visible';
 				document.getElementById('meatRow').style.display = 'block';
 				var ranLog = Math.floor(Math.random() * 3) + 1;
@@ -290,8 +313,8 @@ function sellAllMeat() {
 
 
 function sellOneLeather() {
-	if (meat < 1) {
-		addLog('You have no meat to sell...');
+	if (leather < 1) {
+		addLog('You have no leather to sell...');
 	} else {
 		addLog('One leather sold');
 		credits = credits + 2;
@@ -308,8 +331,8 @@ function sellOneLeather() {
 };
 function sellTenLeather() {
 	if (leather < 10) {
-		if (meat < 1) {
-			addLog('You have no meat to sell...');
+		if (leather < 1) {
+			addLog('You have no leather to sell...');
 		} else {
 			addLog('All leather sold'); 
 			credits = credits + (leather * 2);
@@ -338,8 +361,8 @@ function sellTenLeather() {
 	}
 };
 function sellAllLeather() {
-	if (meat < 1) {
-		addLog('You have no meat to sell...');
+	if (leather < 1) {
+		addLog('You have no leather to sell...');
 	} else {
 		addLog('All leather sold'); 
 		credits = credits + (leather * 2);
@@ -356,9 +379,76 @@ function sellAllLeather() {
 };
 
 
+function sellOneFur() {
+	if (fur < 1) {
+		addLog('You have no fur to sell...');
+	} else {
+		addLog('One fur sold');
+		credits = credits + 1;
+		fur = fur - 1;
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('fur').innerHTML = fur;	
+	}
+};
+function sellTenFur() {
+	if (fur < 10) {
+		if (fur < 1) {
+			addLog('You have no fur to sell...');
+		} else {
+			addLog('All fur sold'); 
+			credits = credits + (fur);
+			fur = 0
+			if (credits == 1) {
+				currency = 'Sceat';
+			} else {
+				currency = 'Sceattas';
+			};
+			document.getElementById('balanceRow').style.display = 'block';
+			document.getElementById('credits').innerHTML = credits + " " + currency;
+			document.getElementById('fur').innerHTML = fur;
+		}
+	} else if (fur > 9) {
+		addLog('Ten fur sold'); 
+		credits = credits + 10;
+		fur = fur - 10
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('fur').innerHTML = fur;
+	}
+};
+function sellAllFur() {
+	if (fur < 1) {
+		addLog('You have no fur to sell...');
+	} else {
+		addLog('All fur sold'); 
+		credits = credits + (fur);
+		fur = 0
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('fur').innerHTML = fur;
+	}
+};
+
+
 function sellOneBone() {
-	if (meat < 1) {
-		addLog('You have no meat to sell...');
+	if (bones < 1) {
+		addLog('You have no bones to sell...');
 	} else {
 		addLog('One bone sold');
 		credits = credits + 5;
@@ -375,8 +465,8 @@ function sellOneBone() {
 };
 function sellTenBone() {
 	if (bones < 10) {
-		if (meat < 1) {
-			addLog('You have no meat to sell...');
+		if (bones < 1) {
+			addLog('You have no bones to sell...');
 		} else {
 			addLog('All bones sold'); 
 			credits = credits + (bones * 5);
@@ -405,8 +495,8 @@ function sellTenBone() {
 	}
 };
 function sellAllBone() {
-	if (meat < 1) {
-		addLog('You have no meat to sell...');
+	if (bones < 1) {
+		addLog('You have no bones to sell...');
 	} else {
 		addLog('All bones sold'); 
 		credits = credits + (bones * 5);
@@ -426,8 +516,9 @@ function sellAllBone() {
 function loadGame() {
 	var savedGame = JSON.parse(localStorage.getItem('gameSave'));
 	if (typeof savedGame.credits !== "undefined") {credits = savedGame.credits;};
-	if (typeof savedGame.leather !== "undefined") {leather = savedGame.leather;};
 	if (typeof savedGame.meat !== "undefined") {meat = savedGame.meat;};
+	if (typeof savedGame.leather !== "undefined") {leather = savedGame.leather;};
+	if (typeof savedGame.fur !== "undefined") {fur = savedGame.fur;};
 	if (typeof savedGame.bones !== "undefined") {bones = savedGame.bones;};
 	if (typeof savedGame.level !== "undefined") {level = savedGame.level;};
 	if (typeof savedGame.waitTime !== "undefined") {waitTime = savedGame.waitTime;};
@@ -451,6 +542,7 @@ function saveGame() {
 	var gameSave = {
 		credits: credits,
 		leather: leather,
+		fur: fur,
 		meat: meat,
 		bones: bones,
 		level: level,
@@ -462,6 +554,7 @@ function saveGame() {
 function resetGame () {
 	credits = 0;
 	leather = 0;
+	fur = 0;
 	meat = 0;
 	bones = 0;
 	level = 0;
@@ -471,8 +564,10 @@ function resetGame () {
 	document.getElementById('balanceRow').style.display = 'none';
 	document.getElementById('upgradesButton').style.visibility = 'hidden';
 	document.getElementById('sellLeather').style.visibility = 'hidden';
+	document.getElementById('sellFur').style.visibility = 'hidden';
 	document.getElementById('sellBones').style.visibility = 'hidden';
 	document.getElementById('leatherRow').style.display = 'none';
+	document.getElementById('furRow').style.display = 'none';
 	document.getElementById('boneRow').style.display = 'none';
 	document.getElementById('meatRow').style.display = 'none'
 	document.getElementById('buildingsButton').style.visibility = 'hidden';
@@ -480,6 +575,7 @@ function resetGame () {
 	document.getElementById('credits').innerHTML = credits + " " + currency;
 	document.getElementById('meat').innerHTML = meat;
 	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('fur').innerHTML = fur;
 	document.getElementById('bones').innerHTML = bones;
 	document.getElementById('resTable').style.visibility = 'hidden';
 	document.getElementById('buySword').style.display = 'block';
@@ -518,15 +614,18 @@ function levelThree() {
 	document.getElementById('sellMeat').style.visibility = 'visible';
 	document.getElementById('balanceRow').style.display = 'block';
 	document.getElementById('upgradesButton').style.visibility = 'visible';
-	document.getElementById('sellLeather').style.visibility = 'visible';
+	document.getElementById('sellLeather').style.visibility = 'visible'
+	document.getElementById('sellFur').style.visibility = 'visible';
 	document.getElementById('sellBones').style.visibility = 'visible';
 	document.getElementById('leatherRow').style.display = 'block';
+	document.getElementById('furRow').style.display = 'block';
 	document.getElementById('boneRow').style.display = 'block';
 	document.getElementById('buildingsButton').style.visibility = 'visible';
 	document.getElementById('toolsButton').style.visibility = 'visible';
 	document.getElementById('credits').innerHTML = credits + " " + currency;
 	document.getElementById('meat').innerHTML = meat;
 	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('fur').innerHTML = fur;
 	document.getElementById('bones').innerHTML = bones;
 	document.getElementById('buySword').style.display = 'none';
 	document.getElementById('meatRow').style.display = 'block';

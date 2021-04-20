@@ -66,6 +66,7 @@ body {
 	flex-direction: column;
 	background-color: #fff;
 	min-width: 600px;
+	max-height: 600px;
 }
 .side {
 	display: flex;
@@ -87,7 +88,7 @@ body {
 	max-width: 100px;
 }
 table {
-	border: 2px solid black;
+	border: 1px solid black;
 	padding: 4px;
 	margin-top: 5px;
 }
@@ -100,6 +101,20 @@ table {
 	margin-top: 0px;
 	margin-bottom: 30px;
 	vertical-align: flex-end;
+}
+
+#upgradesCaption, #buildingsCaption, #toolsCaption {
+	min-width: 580px;
+	max-width: 580px;
+	min-height: 50px;
+	max-height: 50px;
+	display: flex;
+	align-items: center;
+	color: black;
+	font-size: 16px;
+	margin-left: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid black;
 }
 
 /* Style the tab */
@@ -185,11 +200,11 @@ table {
 	animation: boxShadowNone 0.1s;
 	box-shadow: none;
 }
-.xOne, .xTen, .all, .xOneLeather, .xTenLeather, .allLeather, .xOneBone, .xTenBone, .allBone {
+.xOne, .xTen, .all, .xOneLeather, .xTenLeather, .allLeather, .xOneBone, .xTenBone, .allBone, .xOneFur, .xTenFur, .allFur {
 	width: 50px;
 	color: #6b6b6b;
 }
-.xOne:hover, .xTen:hover, .all:hover, .xOneLeather:hover, .xTenLeather:hover, .allLeather:hover, .xOneBone:hover, .xTenBone:hover, .allBone:hover {
+.xOne:hover, .xTen:hover, .all:hover, .xOneLeather:hover, .xTenLeather:hover, .allLeather:hover, .xOneBone:hover, .xTenBone:hover, .allBone:hover, .xOneFur:hover, .xTenFur:hover, .allFur:hover {
 	color: black;
 	text-decoration: underline;
 	text-decoration-color: black;
