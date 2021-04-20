@@ -262,9 +262,9 @@ function buyRopeOne(obj) {
 
 function sellOneMeat() {
 	if (meat < 1) {
-		addLog('You have no meat to sell...');
+		addLog('You have no meat to trade...');
 	} else if (meat > 0) {
-		addLog('One meat sold');
+		addLog('One meat traded');
 		credits = credits + 1;
 		meat = meat - 1;
 		if (credits == 1) {
@@ -284,9 +284,9 @@ function sellOneMeat() {
 function sellTenMeat() {
 	if (meat < 10) {
 		if (meat < 1) {
-			addLog('You have no meat to sell...');
+			addLog('You have no meat to trade...');
 		} else {
-			addLog('All meat sold'); 
+			addLog('All meat traded'); 
 			credits = credits + meat;
 			meat = 0;
 			if (credits == 1) {
@@ -303,7 +303,7 @@ function sellTenMeat() {
 			}
 		}
 	} else if (meat > 9) {
-		addLog('Ten meat sold'); 
+		addLog('Ten meat traded'); 
 		credits = credits + 10;
 		meat = meat - 10;
 		if (credits == 1) {
@@ -323,9 +323,9 @@ function sellTenMeat() {
 function sellHundMeat() {
 	if (meat < 100) {
 		if (meat < 1) {
-			addLog('You have no meat to sell...');
+			addLog('You have no meat to trade...');
 		} else {
-			addLog('All meat sold'); 
+			addLog('All meat traded'); 
 			credits = credits + meat;
 			meat = 0;
 			if (credits == 1) {
@@ -342,7 +342,7 @@ function sellHundMeat() {
 			}
 		}
 	} else if (meat > 99) {
-		addLog('Ten meat sold'); 
+		addLog('Ten meat traded'); 
 		credits = credits + 100;
 		meat = meat - 100;
 		if (credits == 1) {
@@ -361,9 +361,9 @@ function sellHundMeat() {
 };
 function sellAllMeat() {
 	if (meat < 1) {
-		addLog('You have no meat to sell...');
+		addLog('You have no meat to trade...');
 	} else {
-		addLog('All meat sold'); 
+		addLog('All meat traded'); 
 		credits = credits + meat;
 		meat = 0;
 		if (credits == 1) {
@@ -385,9 +385,9 @@ function sellAllMeat() {
 
 function sellOneLeather() {
 	if (leather < 1) {
-		addLog('You have no leather to sell...');
+		addLog('You have no leather to trade...');
 	} else {
-		addLog('One leather sold');
+		addLog('One leather traded');
 		credits = credits + 2;
 		leather = leather - 1;
 		if (credits == 1) {
@@ -403,9 +403,9 @@ function sellOneLeather() {
 function sellTenLeather() {
 	if (leather < 10) {
 		if (leather < 1) {
-			addLog('You have no leather to sell...');
+			addLog('You have no leather to trade...');
 		} else {
-			addLog('All leather sold'); 
+			addLog('All leather traded'); 
 			credits = credits + (leather * 2);
 			leather = 0;
 			if (credits == 1) {
@@ -418,7 +418,7 @@ function sellTenLeather() {
 			document.getElementById('leather').innerHTML = leather;
 		}
 	} else if (leather > 9) {
-		addLog('Ten leather sold'); 
+		addLog('Ten leather traded'); 
 		credits = credits + 20;
 		leather = leather - 10;
 		if (credits == 1) {
@@ -434,9 +434,9 @@ function sellTenLeather() {
 function sellHundLeather() {
 	if (leather < 100) {
 		if (leather < 1) {
-			addLog('You have no leather to sell...');
+			addLog('You have no leather to trade...');
 		} else {
-			addLog('All leather sold'); 
+			addLog('All leather traded'); 
 			credits = credits + (leather * 2);
 			leather = 0;
 			if (credits == 1) {
@@ -449,7 +449,7 @@ function sellHundLeather() {
 			document.getElementById('leather').innerHTML = leather;
 		}
 	} else if (leather > 99) {
-		addLog('Ten leather sold'); 
+		addLog('Ten leather traded'); 
 		credits = credits + 200;
 		leather = leather - 100;
 		if (credits == 1) {
@@ -464,9 +464,9 @@ function sellHundLeather() {
 };
 function sellAllLeather() {
 	if (leather < 1) {
-		addLog('You have no leather to sell...');
+		addLog('You have no leather to trade...');
 	} else {
-		addLog('All leather sold'); 
+		addLog('All leather traded'); 
 		credits = credits + (leather * 2);
 		leather = 0;
 		if (credits == 1) {
@@ -483,9 +483,9 @@ function sellAllLeather() {
 
 function sellOneFur() {
 	if (fur < 1) {
-		addLog('You have no fur to sell...');
+		addLog('You have no fur to trade...');
 	} else {
-		addLog('One fur sold');
+		addLog('One fur traded');
 		credits = credits + 1;
 		fur = fur - 1;
 		if (credits == 1) {
@@ -501,9 +501,9 @@ function sellOneFur() {
 function sellTenFur() {
 	if (fur < 10) {
 		if (fur < 1) {
-			addLog('You have no fur to sell...');
+			addLog('You have no fur to trade...');
 		} else {
-			addLog('All fur sold'); 
+			addLog('All fur traded'); 
 			credits = credits + (fur);
 			fur = 0;
 			if (credits == 1) {
@@ -516,7 +516,7 @@ function sellTenFur() {
 			document.getElementById('fur').innerHTML = fur;
 		}
 	} else if (fur > 9) {
-		addLog('Ten fur sold'); 
+		addLog('Ten fur traded'); 
 		credits = credits + 10;
 		fur = fur - 10;
 		if (credits == 1) {
@@ -532,9 +532,9 @@ function sellTenFur() {
 function sellHundFur() {
 	if (fur < 100) {
 		if (fur < 1) {
-			addLog('You have no fur to sell...');
+			addLog('You have no fur to trade...');
 		} else {
-			addLog('All fur sold'); 
+			addLog('All fur traded'); 
 			credits = credits + (fur);
 			fur = 0;
 			if (credits == 1) {
@@ -547,7 +547,7 @@ function sellHundFur() {
 			document.getElementById('fur').innerHTML = fur;
 		}
 	} else if (fur > 99) {
-		addLog('Ten fur sold'); 
+		addLog('Ten fur traded'); 
 		credits = credits + 100;
 		fur = fur - 100;
 		if (credits == 1) {
@@ -562,9 +562,9 @@ function sellHundFur() {
 };
 function sellAllFur() {
 	if (fur < 1) {
-		addLog('You have no fur to sell...');
+		addLog('You have no fur to trade...');
 	} else {
-		addLog('All fur sold'); 
+		addLog('All fur traded'); 
 		credits = credits + (fur);
 		fur = 0;
 		if (credits == 1) {
@@ -581,9 +581,9 @@ function sellAllFur() {
 
 function sellOneBone() {
 	if (bones < 1) {
-		addLog('You have no bones to sell...');
+		addLog('You have no bones to trade...');
 	} else {
-		addLog('One bone sold');
+		addLog('One bone traded');
 		credits = credits + 5;
 		bones = bones - 1;
 		if (credits == 1) {
@@ -599,9 +599,9 @@ function sellOneBone() {
 function sellTenBone() {
 	if (bones < 10) {
 		if (bones < 1) {
-			addLog('You have no bones to sell...');
+			addLog('You have no bones to trade...');
 		} else {
-			addLog('All bones sold'); 
+			addLog('All bones traded'); 
 			credits = credits + (bones * 5);
 			bones = 0;
 			if (credits == 1) {
@@ -614,7 +614,7 @@ function sellTenBone() {
 			document.getElementById('bones').innerHTML = bones;	
 		}
 	} else if (bones > 9) {
-		addLog('Ten bones sold'); 
+		addLog('Ten bones traded'); 
 		credits = credits + 50;
 		bones = bones - 10;
 		if (credits == 1) {
@@ -630,9 +630,9 @@ function sellTenBone() {
 function sellHundBone() {
 	if (bones < 100) {
 		if (bones < 1) {
-			addLog('You have no bones to sell...');
+			addLog('You have no bones to trade...');
 		} else {
-			addLog('All bones sold'); 
+			addLog('All bones traded'); 
 			credits = credits + (bones * 5);
 			bones = 0;
 			if (credits == 1) {
@@ -645,7 +645,7 @@ function sellHundBone() {
 			document.getElementById('bones').innerHTML = bones;	
 		}
 	} else if (bones > 99) {
-		addLog('Ten bones sold'); 
+		addLog('Ten bones traded'); 
 		credits = credits + 500;
 		bones = bones - 100;
 		if (credits == 1) {
@@ -660,9 +660,9 @@ function sellHundBone() {
 };
 function sellAllBone() {
 	if (bones < 1) {
-		addLog('You have no bones to sell...');
+		addLog('You have no bones to trade...');
 	} else {
-		addLog('All bones sold'); 
+		addLog('All bones traded'); 
 		credits = credits + (bones * 5);
 		bones = 0;
 		if (credits == 1) {
