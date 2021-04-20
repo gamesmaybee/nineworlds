@@ -549,6 +549,7 @@ function saveGame() {
 		waitTime: waitTime
 	}
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
+	addLog('Game saved');
 };
 
 function resetGame () {
