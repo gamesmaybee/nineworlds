@@ -222,17 +222,33 @@ function hunting() {
 
 
 
-function buySword(obj) {
-	var obj = obj;
+function buySword(objHide, objShow) {
 	if (credits < 15) {
 		addLog('Not enough Sceattas');
 	} else {
 		levelThree();
-		obj.style.display = 'none';
+		objHide.style.display = 'none';
+		objShow.style.display = 'block';
 		credits = credits - 15;
 		document.getElementById('credits').innerHTML = credits + " " + currency;
 	}
 }
+function buyGripSelf(objHide, objShow) {
+	if (credits < 20) {
+		addLog('Not enough Sceattas');
+	} else if (leather < 10) {
+		addLog('Not enough leather')
+	} else if (credits >= 20 && leather >= 10) {}{
+		levelThree();
+		objHide.style.display = 'none';
+		credits = credits - 20;
+		leather = leather - 10;
+		waitTime = 4000;
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('leather').innerHTML = leather;
+	}
+}
+
 function buyTrap(obj) {
 	if (credits < trapPrice) {
 		addLog('Not enough Sceattas');
@@ -250,17 +266,31 @@ function buyTrap(obj) {
 			document.getElementById('buyRopeOne').style.display = 'none';
 		}
 	}
+	document.getElementById('buyTrap').innerText = trapPrice + ' Sceattas';
 }
-function buyRopeOne(obj) {
+function buyRopeOne(objHide, objShow) {
 	if (fur < 20) {
 		addLog('Not enough fur');
 	} else {
 		// obj.style.display = 'none';
 		fur = fur - 20;
 		document.getElementById('fur').innerHTML = fur;
-		ropeLength = ropeLength + 1;
-		obj.style.display = 'none'
+		ropeLength = 1;
+		objHide.style.display = 'none';
+		objShow.style.display = 'block';
 		huntNum = 'from 1 to 3';
+	}
+}
+function buyRopeTwo(objHide, objShow) {
+	if (fur < 100) {
+		addLog('Not enough fur');
+	} else {
+		// obj.style.display = 'none';
+		fur = fur - 100;
+		document.getElementById('fur').innerHTML = fur;
+		ropeLength = 2;
+		objHide.style.display = 'none'
+		huntNum = 'from 2 to 6';
 	}
 }
 
@@ -707,6 +737,17 @@ function loadGame() {
 		document.getElementById('buyRopeOne').style.display = 'none';
 	} else if (ropeLength == 0 && trapNum > 0) {
 		document.getElementById('buyRopeOne').style.display = 'block';
+	} 
+	if (ropeLength == 1) {
+		document.getElementById('buyRopeTwo').style.display = 'block';
+	} else if (ropeLength > 1 || ropeLength < 1) {
+		document.getElementById('buyRopeTwo').style.display = 'none';
+	}
+
+	if (level == 3 && waitTime == 5000) {
+		document.getElementById('buyGripSelf').style.display = 'block';
+	} else {
+		document.getElementById('buyGripSelf').style.display = 'none';
 	}
 	document.getElementById('credits').innerHTML = credits + " " + currency;
 	document.getElementById('leather').innerHTML = leather;
@@ -783,8 +824,16 @@ function checkTraps() {
 	console.log(trapNum);
 	console.log(ropeLength);
 	for (var i = 0; i < trapNum; i++) {
-		var item = Math.floor(Math.random() * 4);
-		var itemNum = Math.floor(Math.random() * 3) + ropeLength;
+		if (ropeLength == 0) {
+			var item = Math.floor(Math.random() * 4);
+			var itemNum = Math.floor(Math.random() * 3);
+		} else if (ropeLength == 1) {
+			var item = Math.floor(Math.random() * 4);
+			var itemNum = Math.floor(Math.random() * 3) + 1;
+		} else if (ropeLength == 2) {
+			var item = Math.floor(Math.random() * 4);
+			var itemNum = Math.floor(Math.random() * 5) + 2;
+		}
 		if (item == 0) {
 			meat = meat + itemNum;
 			console.log('+' + itemNum + ' meat');
@@ -807,7 +856,7 @@ function checkTraps() {
 			}
 		} else if (ropeLength > 0) {
 			if (item == 3) {
-				if (itemNum == 3) {
+				if (itemNum > 2) {
 					itemNum = 1;
 				}
 				bones = bones + itemNum;
