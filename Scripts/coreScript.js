@@ -141,6 +141,8 @@ var ropeLength = 0;
 var trapNum = 0;
 var trapPrice = 100;
 
+var huntNum = 'from 0 to 2';
+
 var level = 0;
 
 function hunting() {
@@ -245,6 +247,7 @@ function buyRopeOne(obj) {
 		document.getElementById('fur').innerHTML = fur;
 		ropeLength = ropeLength + 1;
 		obj.style.display = 'none'
+		huntNum = 'from 1 to 3';
 	}
 }
 
@@ -545,6 +548,7 @@ function loadGame() {
 	if (typeof savedGame.ropeLength !== "undefined") {ropeLength = savedGame.ropeLength;};
 	if (typeof savedGame.trapNum !== "undefined") {trapNum = savedGame.trapNum;};
 	if (typeof savedGame.trapPrice !== "undefined") {trapPrice = savedGame.trapPrice;};
+	if (typeof savedGame.huntNum !== "undefined") {huntNum = savedGame.huntNum;};
 	if (level == 1) {
 		levelOne();
 	}
@@ -583,7 +587,8 @@ function saveGame() {
 		waitTime: waitTime,
 		ropeLength: ropeLength,
 		trapPrice: trapPrice,
-		trapNum: trapNum
+		trapNum: trapNum,
+		huntNum: huntNum
 	}
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
 	addLog('Game saved');
