@@ -200,11 +200,11 @@ table {
 	animation: boxShadowNone 0.1s;
 	box-shadow: none;
 }
-.xOne, .xTen, .all, .xOneLeather, .xTenLeather, .allLeather, .xOneBone, .xTenBone, .allBone, .xOneFur, .xTenFur, .allFur {
-	width: 50px;
+.xOne, .xTen, .xHund, .all, .xOneLeather, .xTenLeather, .xHundLeather, .allLeather, .xOneBone, .xTenBone, .xHundBone, .allBone, .xOneFur, .xTenFur, .xHundFur, .allFur {
+	width: 40px;
 	color: #6b6b6b;
 }
-.xOne:hover, .xTen:hover, .all:hover, .xOneLeather:hover, .xTenLeather:hover, .allLeather:hover, .xOneBone:hover, .xTenBone:hover, .allBone:hover, .xOneFur:hover, .xTenFur:hover, .allFur:hover {
+.xOne:hover, .xTen:hover, .xHund:hover, .all:hover, .xOneLeather:hover, .xTenLeather:hover, .xHundLeather:hover, .allLeather:hover, .xOneBone:hover, .xTenBone:hover, .xHundBone:hover, .allBone:hover, .xOneFur:hover, .xTenFur:hover, .xHundFur:hover, .allFur:hover {
 	color: black;
 	text-decoration: underline;
 	text-decoration-color: black;
