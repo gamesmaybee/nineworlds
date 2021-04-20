@@ -90,7 +90,11 @@ function addLog(log) {
 
 setInterval(function() {
 	document.title = credits + " " + currency + " - The 9 Worlds"
-}, 100)
+}, 500);
+
+setInterval(function() {
+	checkTraps();
+}, 10000);
 
 function openTab(evt, tabName) {
 	// Declare all variables
@@ -133,14 +137,11 @@ var currency = 'Sceattas';
 
 var hunt = 1;
 var waitTime = 5000;
+var ropeLength = 0;
+var trapNum = 0;
+var trapPrice = 100;
 
 var level = 0;
-
-document.getElementById('credits').innerHTML = credits + " " + currency;
-document.getElementById('leather').innerHTML = leather;
-document.getElementById('fur').innerHTML = fur;
-document.getElementById('meat').innerHTML = meat;
-document.getElementById('bones').innerHTML = bones;
 
 function hunting() {
 	if (hunt == 1) {
@@ -210,10 +211,6 @@ function hunting() {
 };
 
 
-// function itemBought(func) {
-// 	func = true;
-// }
-
 
 function buySword(obj) {
 	var obj = obj;
@@ -225,7 +222,30 @@ function buySword(obj) {
 		credits = credits - 15;
 		document.getElementById('credits').innerHTML = credits + " " + currency;
 	}
-	// itemBought(swordBought);
+}
+function buyTrap(obj) {
+	if (credits < trapPrice) {
+		addLog('Not enough Sceattas');
+	} else {
+		if (obj < 1) {
+			obj.style.display = 'block';
+		}
+		credits = credits - trapPrice;
+		trapNum = trapNum + 1;
+		trapPrice = Math.ceil(trapPrice * 1.15);
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+	}
+}
+function buyRopeOne(obj) {
+	if (fur < 20) {
+		addLog('Not enough fur');
+	} else {
+		// obj.style.display = 'none';
+		fur = fur - 20;
+		document.getElementById('fur').innerHTML = fur;
+		ropeLength = ropeLength + 1;
+		obj.style.display = 'none'
+	}
 }
 
 function sellOneMeat() {
@@ -522,6 +542,9 @@ function loadGame() {
 	if (typeof savedGame.bones !== "undefined") {bones = savedGame.bones;};
 	if (typeof savedGame.level !== "undefined") {level = savedGame.level;};
 	if (typeof savedGame.waitTime !== "undefined") {waitTime = savedGame.waitTime;};
+	if (typeof savedGame.ropeLength !== "undefined") {ropeLength = savedGame.ropeLength;};
+	if (typeof savedGame.trapNum !== "undefined") {trapNum = savedGame.trapNum;};
+	if (typeof savedGame.trapPrice !== "undefined") {trapPrice = savedGame.trapPrice;};
 	if (level == 1) {
 		levelOne();
 	}
@@ -531,6 +554,17 @@ function loadGame() {
 	if (level == 3) {
 		levelThree();
 	}
+	if (ropeLength > 0 || trapNum == 0) {
+		document.getElementById('buyRopeOne').style.display = 'none';
+	} else if (ropeLength == 0 && trapNum > 0) {
+		document.getElementById('buyRopeOne').style.display = 'block';
+	}
+	document.getElementById('credits').innerHTML = credits + " " + currency;
+	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('fur').innerHTML = fur;
+	document.getElementById('meat').innerHTML = meat;
+	document.getElementById('bones').innerHTML = bones;
+	document.getElementById('buyTrap').innerHTML = 'TRAP (' + trapNum + ')'
 }
 
 window.onload = function() {
@@ -546,7 +580,10 @@ function saveGame() {
 		meat: meat,
 		bones: bones,
 		level: level,
-		waitTime: waitTime
+		waitTime: waitTime,
+		ropeLength: ropeLength,
+		trapPrice: trapPrice,
+		trapNum: trapNum
 	}
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
 	addLog('Game saved');
@@ -561,6 +598,9 @@ function resetGame () {
 	level = 0;
 	waitTime = 5000;
 	level = 0;
+	ropeLength = 0;
+	trapNum = 0;
+	trapPrice = 0;
 	document.getElementById('sellMeat').style.visibility = 'hidden';
 	document.getElementById('balanceRow').style.display = 'none';
 	document.getElementById('upgradesButton').style.visibility = 'hidden';
@@ -587,6 +627,39 @@ function resetGame () {
 setInterval(function() {
 	saveGame();
 }, 30000);
+
+
+function checkTraps() {
+	console.log(trapNum);
+	console.log(ropeLength);
+	for (var i = 0; i < trapNum; i++) {
+		var item = Math.floor(Math.random() * 4);
+		var itemNum = Math.floor(Math.random() * 3) + ropeLength;
+		if (item == 0) {
+			meat = meat + itemNum;
+			console.log('+' + itemNum + ' meat');
+		}
+		if (item == 1) {
+			leather = leather + itemNum;
+			console.log('+' + itemNum + ' leather');
+		}
+		if (item == 2) {
+			fur = fur + itemNum;
+			console.log('+' + itemNum + ' fur');
+		}
+		if (item == 3) {
+			if (itemNum != 1) {
+				itemNum = 0;
+			}
+			bones = bones + itemNum;
+			console.log('+' + itemNum + ' bones');
+		}
+	}
+	document.getElementById('meat').innerHTML = meat;
+	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('fur').innerHTML = fur;
+	document.getElementById('bones').innerHTML = bones;
+}
 
 
 function levelOne() {

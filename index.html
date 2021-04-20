@@ -65,12 +65,12 @@
 
 			<div id="buildings" class="tabcontent">
 				<div id="buildingsCaption">Buildings gather resources for you</div>
-				<button class="main-button" onmouseover="changeText(this, '100 Sceattas', '14px'); changeText(document.getElementById('buildingsCaption'), 'Traps and kills any animals that come close to your base - 0-2 meat, leather or bones per second', '16px')" onmouseout="changeText(this, 'TRAP', '16px'); changeText(document.getElementById('buildingsCaption'), 'Buildings gather resources for you', '16px')" onclick="buyTrap(this)" id="buyTrap">TRAP</button>
+				<button class="main-button" onmouseover="changeText(this, trapPrice + ' Sceattas', '14px'); changeText(document.getElementById('buildingsCaption'), 'Traps and kills any animals that come close to your base - 0-2 meat, leather, fur or bones per 10 seconds', '16px')" onmouseout="changeText(this, 'TRAP (' + trapNum + ')', '16px'); changeText(document.getElementById('buildingsCaption'), 'Buildings gather resources for you', '16px')" onclick="buyTrap(document.getElementById('buyRopeOne'))" id="buyTrap">TRAP</button>
 			</div>
 
 			<div id="tools" class="tabcontent">
 				<div id="toolsCaption"><span>Tools upgrade your buildings</span></div>
-				<button class="main-button" onmouseover="changeText(this, '20 Fur', '14px'); changeText(document.getElementById('toolsCaption'), 'The longer the rope, the more resources - All traps produce 1-3 meat, leather or bones per second', '16px')" onmouseout="changeText(this, 'LONGER ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyRopeOne(this)" id="buyRopeOne">LONGER ROPES</button>
+				<button class="main-button" onmouseover="changeText(this, '20 Fur', '14px'); changeText(document.getElementById('toolsCaption'), 'The longer the rope, the more resources - All traps produce 1-3 meat, leather, fur or bones per 10 seconds', '16px')" onmouseout="changeText(this, 'LONGER ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyRopeOne(this)" id="buyRopeOne">LONGER ROPES</button>
 			</div>
 		</div>
 
