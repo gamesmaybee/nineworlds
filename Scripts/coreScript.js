@@ -178,13 +178,19 @@ function hunting() {
 					addLog("Hunt successful! A mad rabbit chased you, but you killed it");
 				}				
 			}
-			if (level == 0 && meatGathered > 0) {
+			if (level == 0) {
 				level = 1;
 				levelOne();
 			}
 		}, waitTime);	
 	}
 };
+
+
+// function itemBought(func) {
+// 	func = true;
+// }
+
 
 function buySword(obj) {
 	var obj = obj;
@@ -196,30 +202,16 @@ function buySword(obj) {
 		credits = credits - 15;
 		document.getElementById('credits').innerHTML = credits + " " + currency;
 	}
+	// itemBought(swordBought);
 }
 
 function sellOneMeat() {
-	addLog('One meat sold');
-	credits = credits + 1;
-	meat = meat - 1;
-	if (credits == 1) {
-		currency = 'Sceat';
-	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('meat').innerHTML = meat;
-	if (level == 1 && credits >= 10) {
-		level = 2;
-		levelTwo();
-	}
-};
-function sellTenMeat() {
-	if (meat < 10) {
-		addLog('All meat sold'); 
-		credits = credits + meat;
-		meat = 0
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
+	} else if (meat > 0) {
+		addLog('One meat sold');
+		credits = credits + 1;
+		meat = meat - 1;
 		if (credits == 1) {
 			currency = 'Sceat';
 		} else {
@@ -231,6 +223,29 @@ function sellTenMeat() {
 		if (level == 1 && credits >= 10) {
 			level = 2;
 			levelTwo();
+		}
+	}
+};
+function sellTenMeat() {
+	if (meat < 10) {
+		if (meat < 1) {
+			addLog('You have no meat to sell...');
+		} else {
+			addLog('All meat sold'); 
+			credits = credits + meat;
+			meat = 0
+			if (credits == 1) {
+				currency = 'Sceat';
+			} else {
+				currency = 'Sceattas';
+			};
+			document.getElementById('balanceRow').style.display = 'block';
+			document.getElementById('credits').innerHTML = credits + " " + currency;
+			document.getElementById('meat').innerHTML = meat;
+			if (level == 1 && credits >= 10) {
+				level = 2;
+				levelTwo();
+			}
 		}
 	} else if (meat > 9) {
 		addLog('Ten meat sold'); 
@@ -251,43 +266,12 @@ function sellTenMeat() {
 	}
 };
 function sellAllMeat() {
-	addLog('All meat sold'); 
-	credits = credits + meat;
-	meat = 0
-	if (credits == 1) {
-		currency = 'Sceat';
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
 	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('meat').innerHTML = meat;
-	if (level == 1 && credits >= 10) {
-		level = 2;
-		levelTwo();
-	}
-};
-
-
-
-function sellOneLeather() {
-	addLog('One leather sold');
-	credits = credits + 2;
-	leather = leather - 1;
-	if (credits == 1) {
-		currency = 'Sceat';
-	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('leather').innerHTML = leather;
-};
-function sellTenLeather() {
-	if (leather < 10) {
-		addLog('All leather sold'); 
-		credits = credits + (leather * 2);
-		leather = 0
+		addLog('All meat sold'); 
+		credits = credits + meat;
+		meat = 0
 		if (credits == 1) {
 			currency = 'Sceat';
 		} else {
@@ -295,7 +279,50 @@ function sellTenLeather() {
 		};
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits + " " + currency;
-		document.getElementById('leather').innerHTML = leather;
+		document.getElementById('meat').innerHTML = meat;
+		if (level == 1 && credits >= 10) {
+			level = 2;
+			levelTwo();
+		}
+	}
+};
+
+
+
+function sellOneLeather() {
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
+	} else {
+		addLog('One leather sold');
+		credits = credits + 2;
+		leather = leather - 1;
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('leather').innerHTML = leather;	
+	}
+};
+function sellTenLeather() {
+	if (leather < 10) {
+		if (meat < 1) {
+			addLog('You have no meat to sell...');
+		} else {
+			addLog('All leather sold'); 
+			credits = credits + (leather * 2);
+			leather = 0
+			if (credits == 1) {
+				currency = 'Sceat';
+			} else {
+				currency = 'Sceattas';
+			};
+			document.getElementById('balanceRow').style.display = 'block';
+			document.getElementById('credits').innerHTML = credits + " " + currency;
+			document.getElementById('leather').innerHTML = leather;
+		}
 	} else if (leather > 9) {
 		addLog('Ten leather sold'); 
 		credits = credits + 20;
@@ -311,38 +338,31 @@ function sellTenLeather() {
 	}
 };
 function sellAllLeather() {
-	addLog('All leather sold'); 
-	credits = credits + (leather * 2);
-	leather = 0
-	if (credits == 1) {
-		currency = 'Sceat';
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
 	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('leather').innerHTML = leather;
+		addLog('All leather sold'); 
+		credits = credits + (leather * 2);
+		leather = 0
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('leather').innerHTML = leather;
+	}
 };
 
 
 function sellOneBone() {
-	addLog('One bone sold');
-	credits = credits + 5;
-	bones = bones - 1;
-	if (credits == 1) {
-		currency = 'Sceat';
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
 	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('bones').innerHTML = bones;
-};
-function sellTenBone() {
-	if (bones < 10) {
-		addLog('All bones sold'); 
-		credits = credits + (bones * 5);
-		bones = 0
+		addLog('One bone sold');
+		credits = credits + 5;
+		bones = bones - 1;
 		if (credits == 1) {
 			currency = 'Sceat';
 		} else {
@@ -351,6 +371,25 @@ function sellTenBone() {
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits + " " + currency;
 		document.getElementById('bones').innerHTML = bones;
+	}
+};
+function sellTenBone() {
+	if (bones < 10) {
+		if (meat < 1) {
+			addLog('You have no meat to sell...');
+		} else {
+			addLog('All bones sold'); 
+			credits = credits + (bones * 5);
+			bones = 0
+			if (credits == 1) {
+				currency = 'Sceat';
+			} else {
+				currency = 'Sceattas';
+			};
+			document.getElementById('balanceRow').style.display = 'block';
+			document.getElementById('credits').innerHTML = credits + " " + currency;
+			document.getElementById('bones').innerHTML = bones;	
+		}
 	} else if (bones > 9) {
 		addLog('Ten bones sold'); 
 		credits = credits + 50;
@@ -366,17 +405,21 @@ function sellTenBone() {
 	}
 };
 function sellAllBone() {
-	addLog('All bones sold'); 
-	credits = credits + (bones * 5);
-	bones = 0
-	if (credits == 1) {
-		currency = 'Sceat';
+	if (meat < 1) {
+		addLog('You have no meat to sell...');
 	} else {
-		currency = 'Sceattas';
-	};
-	document.getElementById('balanceRow').style.display = 'block';
-	document.getElementById('credits').innerHTML = credits + " " + currency;
-	document.getElementById('bones').innerHTML = bones;
+		addLog('All bones sold'); 
+		credits = credits + (bones * 5);
+		bones = 0
+		if (credits == 1) {
+			currency = 'Sceat';
+		} else {
+			currency = 'Sceattas';
+		};
+		document.getElementById('balanceRow').style.display = 'block';
+		document.getElementById('credits').innerHTML = credits + " " + currency;
+		document.getElementById('bones').innerHTML = bones;
+	}
 };
 
 
@@ -416,6 +459,34 @@ function saveGame() {
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
 };
 
+function resetGame () {
+	credits = 0;
+	leather = 0;
+	meat = 0;
+	bones = 0;
+	level = 0;
+	waitTime = 5000;
+	level = 0;
+	document.getElementById('sellMeat').style.visibility = 'hidden';
+	document.getElementById('balanceRow').style.display = 'none';
+	document.getElementById('upgradesButton').style.visibility = 'hidden';
+	document.getElementById('sellLeather').style.visibility = 'hidden';
+	document.getElementById('sellBones').style.visibility = 'hidden';
+	document.getElementById('leatherRow').style.display = 'none';
+	document.getElementById('boneRow').style.display = 'none';
+	document.getElementById('meatRow').style.display = 'none'
+	document.getElementById('buildingsButton').style.visibility = 'hidden';
+	document.getElementById('toolsButton').style.visibility = 'hidden';
+	document.getElementById('credits').innerHTML = credits + " " + currency;
+	document.getElementById('meat').innerHTML = meat;
+	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('bones').innerHTML = bones;
+	document.getElementById('resTable').style.visibility = 'hidden';
+	document.getElementById('buySword').style.display = 'block';
+	saveGame();
+	location.reload();
+}
+
 setInterval(function() {
 	saveGame();
 }, 30000);
@@ -424,13 +495,22 @@ setInterval(function() {
 function levelOne() {
 	document.getElementById('sellMeat').style.visibility = 'visible';
 	document.getElementById('balanceRow').style.display = 'block';
+	document.getElementById('meatRow').style.display = 'block';
+	document.getElementById('credits').innerHTML = credits + " " + currency;
+	document.getElementById('meat').innerHTML = meat;
+	document.getElementById('resTable').style.visibility = 'visible';
 
 	level = 1;
 }
 function levelTwo () {
+	document.getElementById('credits').innerHTML = credits + " " + currency;
+	document.getElementById('meat').innerHTML = meat;
 	document.getElementById('sellMeat').style.visibility = 'visible';
 	document.getElementById('balanceRow').style.display = 'block';
 	document.getElementById('upgradesButton').style.visibility = 'visible';
+	document.getElementById('buySword').style.display = 'block';
+	document.getElementById('meatRow').style.display = 'block';
+	document.getElementById('resTable').style.visibility = 'visible';
 
 	level = 2;
 }
@@ -444,5 +524,12 @@ function levelThree() {
 	document.getElementById('boneRow').style.display = 'block';
 	document.getElementById('buildingsButton').style.visibility = 'visible';
 	document.getElementById('toolsButton').style.visibility = 'visible';
+	document.getElementById('credits').innerHTML = credits + " " + currency;
+	document.getElementById('meat').innerHTML = meat;
+	document.getElementById('leather').innerHTML = leather;
+	document.getElementById('bones').innerHTML = bones;
+	document.getElementById('buySword').style.display = 'none';
+	document.getElementById('meatRow').style.display = 'block';
+	document.getElementById('resTable').style.visibility = 'visible';
 	level = 3;
 }
