@@ -977,7 +977,7 @@ function checkTraps() {
 
 	var trapsBroken = 0;
 
-	console.log(' ');
+	console.log('.');
 	
 	for (var i = 0; i < trapNum; i++) {
 		var breakChance = Math.floor(Math.random() * trapPercentNum) + 1;
