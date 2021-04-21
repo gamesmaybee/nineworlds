@@ -80,17 +80,26 @@ body {
 }
 .right-cell {
 	text-align: right;
-	min-width: 195px;
-	max-width: 195px;
+	min-width: 185px;
+	max-width: 185px;
 }
 .left-cell {
 	min-width: 100px;
 	max-width: 100px;
 }
 table {
-	border: 1px solid black;
+	border: none;
 	padding: 4px;
-	margin-top: 5px;
+	margin: 0;
+}
+fieldset {
+	border: 1px solid black;
+	padding: 0;
+	margin-top: -5px;
+	margin-bottom: 30px;
+}
+legend {
+	margin: 0 20px;
 }
 #logs {
 	display: flex;
@@ -100,7 +109,10 @@ table {
 #logs p {
 	margin-top: 0px;
 	margin-bottom: 30px;
-	vertical-align: flex-end;
+}
+
+#balanceRow {
+	font-weight: 900;
 }
 
 #upgradesCaption, #buildingsCaption, #toolsCaption {
@@ -209,6 +221,16 @@ table {
 	text-decoration: underline;
 	text-decoration-color: black;
 }
+.xOneBait, .xTenBait, .xHundBait {
+	width: 50px;
+	color: #6b6b6b;
+}
+.xOneBait:hover, .xTenBait:hover, .xHundBait:hover {
+	color: black;
+	text-decoration: underline;
+	text-decoration-color: black;
+}
+
 .main-button:hover, .main-div:hover {
 	animation: boxShadowFull 0.1s;
 	box-shadow: 0 0 4px black;
