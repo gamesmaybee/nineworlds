@@ -253,6 +253,7 @@ function buySword(objHide, objShow) {
 		objShow.style.display = 'block';
 		credits = credits - 15;
 		document.getElementById('credits').innerHTML = credits;
+		addLog('Wooden sword bought');
 	}
 }
 function buyGripSelf(objHide, objShow) {
@@ -268,6 +269,7 @@ function buyGripSelf(objHide, objShow) {
 		waitTime = 4000;
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('leather').innerHTML = leather;
+		addLog('Leather grip added to the wooden sword');
 	}
 }
 function buyTrap(showOne, showTwo) {
@@ -290,6 +292,7 @@ function buyTrap(showOne, showTwo) {
 		} else if (ropeStrength > 0) {
 			document.getElementById('buyStrengthOne').style.display = 'none';
 		}
+		addLog('Trap bought and installed');
 	}
 	document.getElementById('buyTrap').innerText = trapPrice + ' Sceattas';
 	console.log(ropeLength + ' : ' + trapBought);
@@ -305,6 +308,7 @@ function buyRopeOne(objHide, objShow) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
 		huntNum = 'from 1 to 3';
+		addLog('Ropes in all traps are now longer');
 	}
 }
 function buyRopeTwo(objHide, objShow) {
@@ -318,6 +322,7 @@ function buyRopeTwo(objHide, objShow) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
 		huntNum = 'from 2 to 6';
+		addLog('Ropes in all traps are now longer');
 	}
 }
 function buyRopeThree(objHide, objShow) {
@@ -331,6 +336,7 @@ function buyRopeThree(objHide, objShow) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
 		huntNum = 'from 5 to 10';
+		addLog('Ropes in all traps are now longer');
 	}
 }
 function buyRopeFour(objHide, objShow) {
@@ -344,6 +350,7 @@ function buyRopeFour(objHide, objShow) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
 		huntNum = 'from 10 to 20';
+		addLog('Ropes in all traps are now longer');
 	}
 }
 function buyRopeFive(objHide, objShow) {
@@ -356,6 +363,7 @@ function buyRopeFive(objHide, objShow) {
 		ropeLength = 5;
 		objHide.style.display = 'none'
 		huntNum = 'from 20 to 50';
+		addLog('Ropes in all traps are now longer');
 	}
 }
 
@@ -372,6 +380,7 @@ function buyStrengthOne(objHide, objShow) {
 		objShow.style.display = 'block';
 		trapPercent = 10;
 		trapPercentNum = 10;
+		addLog('Ropes in all traps are now stronger');
 	}
 }
 function buyStrengthTwo(objHide, objShow) {
@@ -386,6 +395,7 @@ function buyStrengthTwo(objHide, objShow) {
 		objShow.style.display = 'block';
 		trapPercent = 5;
 		trapPercentNum = 20;
+		addLog('Ropes in all traps are now stronger');
 	}
 }
 function buyStrengthThree(objHide, objShow) {
@@ -400,6 +410,7 @@ function buyStrengthThree(objHide, objShow) {
 		objShow.style.display = 'block';
 		trapPercent = 1;
 		trapPercentNum = 100;
+		addLog('Ropes in all traps are now stronger');
 	}
 }
 function buyStrengthFour(objHide, objShow) {
@@ -414,6 +425,7 @@ function buyStrengthFour(objHide, objShow) {
 		objShow.style.display = 'block';
 		trapPercent = 0.1;
 		trapPercentNum = 1000;
+		addLog('Ropes in all traps are now stronger');
 	}
 }
 function buyStrengthFive(objHide, objShow) {
@@ -427,6 +439,7 @@ function buyStrengthFive(objHide, objShow) {
 		objHide.style.display = 'none'
 		trapPercent = 0.0001;
 		trapPercentNum = 1000000;
+		addLog('Ropes in all traps are now stronger');
 	}
 }
 
