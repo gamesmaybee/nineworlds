@@ -906,7 +906,14 @@ function saveGame() {
 	addLog('Game saved');
 };
 
-function resetGame () {
+
+function resetConfirm() {
+	if (confirm('Are you sure you want to reset your progress?\nThis action cannot be undone.')) {
+		resetGame();
+	} else {};
+}
+
+function resetGame() {
 	credits = 0;
 	leather = 	0;
 	fur = 0;
