@@ -876,6 +876,7 @@ function loadGame() {
 	document.getElementById('bones').innerHTML = bones;
 	document.getElementById('buyTrap').innerHTML = 'TRAP (' + trapNum + ')';
 	document.getElementById('bait').innerHTML = bait;
+	document.getElementById('craftBait').style.visibility = 'hidden';
 }
 
 window.onload = function() {
