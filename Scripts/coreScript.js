@@ -169,8 +169,8 @@ var ropeStrength = 0;
 var trapNum = 0;
 var trapPrice = 25;
 var trapBought = 0;
-var trapPercentNum = 5;
-var trapPercent = 20;
+var trapPercentNum = 10;
+var trapPercent = 10;
 
 var huntNum = 'from 0 to 2';
 
@@ -401,8 +401,8 @@ function buyStrengthOne(objHide, objShow) {
 		ropeStrength = 1;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 10;
-		trapPercentNum = 10;
+		trapPercent = 5;
+		trapPercentNum = 20;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
@@ -416,8 +416,8 @@ function buyStrengthTwo(objHide, objShow) {
 		ropeStrength = 2;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 5;
-		trapPercentNum = 20;
+		trapPercent = 2;
+		trapPercentNum = 50;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
