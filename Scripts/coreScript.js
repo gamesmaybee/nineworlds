@@ -171,6 +171,7 @@ var trapPrice = 25;
 var trapBought = 0;
 var trapPercentNum = 10;
 var trapPercent = 10;
+var resourcesNum = 5;
 
 var huntNum = 'from 0 to 2';
 
@@ -191,13 +192,19 @@ function hunting() {
 				var furGathered = 0;
 				var bonesGathered = 0;
 			} else if (level >= 3) {
-				var meatGathered = Math.floor(Math.random() * 4);
-				var leatherGathered = Math.floor(Math.random() * 3);
-				var furGathered = Math.floor(Math.random() * 3);
-				var bonesGathered = Math.floor(Math.random() * 3);
-				if (bonesGathered != 1) {
+				var meatGathered = Math.floor(Math.random() * resourcesNum);
+				var leatherGathered = Math.floor(Math.random() * resourcesNum) - 1;
+				if (leatherGathered < 0) {leatherGathered = 0};
+				var furGathered = Math.floor(Math.random() * resourcesNum) -1;
+				if (furGathered < 0) {furGathered = 0};
+				var bonesGathered = Math.ceil(Math.random() * (resourcesNum / 2));
+				if (resourcesNum == 5 && bonesGathered != 1) {
 					bonesGathered = 0;
-				};
+				} else if (resourcesNum == 7 && bonesGathered == 3) {
+					bonesGathered  = 1;
+				} else if (resourcesNum == 7 && bonesGathered == 4) {
+					bonesGathered  = 0;
+				}
 			};
 
 			meat = meat + meatGathered;
@@ -286,6 +293,7 @@ function buyGripSelf(objHide, objShow) {
 		addLog('Not enough leather')
 	} else if (credits >= 20 && leather >= 10) {
 		objHide.style.display = 'none';
+		objShow.style.display = 'block';
 		credits = credits - 20;
 		leather = leather - 10;
 		waitTime = 4000;
@@ -295,6 +303,24 @@ function buyGripSelf(objHide, objShow) {
 		frameTime = 40;
 	}
 }
+function buyBoneSword(objHide, objShow) {
+	if (credits < 75) {
+		addLog('Not enough Sceattas');
+	} else if (bones < 25) {
+		addLog('Not enough bones')
+	} else if (credits >= 75 && bones >= 25) {
+		objHide.style.display = 'none';
+		credits = credits - 75;
+		bones = bones - 25;
+		document.getElementById('credits').innerHTML = credits;
+		document.getElementById('bones').innerHTML = bones;
+		addLog('You now have a bone sword');
+		resourcesNum = 7;
+	}
+}
+
+
+
 function buyTrap(showOne, showTwo) {
 	if (credits < trapPrice) {
 		addLog('Not enough Sceattas');
@@ -835,6 +861,7 @@ function loadGame() {
 	if (typeof savedGame.trapPercent !== "undefined") {trapPercent = savedGame.trapPercent;};
 	if (typeof savedGame.trapPercentNum !== "undefined") {trapPercentNum = savedGame.trapPercentNum;};
 	if (typeof savedGame.bait !== "undefined") {bait = savedGame.bait;};
+	if (typeof savedGame.resourcesNum !== "undefined") {resourcesNum = savedGame.resourcesNum;};
 	if (level == 1) {
 		levelOne();
 	}
@@ -909,6 +936,12 @@ function loadGame() {
 			frameTime = 40;
 		}
 	}
+
+	if (resourcesNum == 5 && waitTime == 4000) {
+		document.getElementById('buyBoneSword').style.display = 'block';
+	} else {
+		document.getElementById('buyBoneSword').style.display = 'none';
+	}
 	document.getElementById('credits').innerHTML = credits;
 	document.getElementById('leather').innerHTML = leather;
 	document.getElementById('fur').innerHTML = fur;
@@ -940,7 +973,8 @@ function saveGame() {
 		trapPercent: trapPercent,
 		trapPercentNum: trapPercentNum,
 		ropeStrength: ropeStrength,
-		bait: bait
+		bait: bait,
+		resourcesNum: resourcesNum
 	}
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
 	addLog('Game saved');
