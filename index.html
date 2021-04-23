@@ -26,7 +26,7 @@
 
 			
 			<div id="main" class="tabcontent">
-				<button class="main-button" onmouseover="changeText(this, 'Gather Resources', '14px')" onmouseout="changeText(this, 'HUNT', '16px')" onclick="hunting()">HUNT</button>
+				<button class="main-button" onmouseover="changeText(document.getElementById('huntText'), 'Gather Resources', '14px')" onmouseout="changeText(document.getElementById('huntText'), 'HUNT', '16px')" onclick="hunting()" id="huntButton"><span id="huntText">HUNT</span><div id="progressBar"></div></button>
 				<br>
 
 				<div class="main-div" onmouseover="showButtonMeat(this)" onmouseout=" hideButtonMeat(this)" id="sellMeat" style="margin-top: 30px;">

@@ -8,6 +8,7 @@ document.getElementById('sellLeather').style.visibility = 'hidden';
 document.getElementById('sellFur').style.visibility = 'hidden';
 document.getElementById('sellBones').style.visibility = 'hidden';
 document.getElementById('craftBait').style.visibility = 'hidden';
+document.getElementById('buyGripSelf').style.display = 'none';
 
 function hideButtonMeat(obj) {
 	var obj = obj;
@@ -162,6 +163,7 @@ var bait = 0;
 
 var hunt = 1;
 var waitTime = 5000;
+var frameTime = 50;
 var ropeLength = 0;
 var ropeStrength = 0;
 var trapNum = 0;
@@ -173,6 +175,8 @@ var trapPercent = 20;
 var huntNum = 'from 0 to 2';
 
 var level = 0;
+
+var intRepeat = 0;
 
 function hunting() {
 	if (hunt == 1) {
@@ -239,9 +243,28 @@ function hunting() {
 				levelOne();
 			}
 		}, waitTime);	
+		loadBar();
 	}
 };
 
+function loadBar() {
+	if (intRepeat == 0) {
+		intRepeat = 1;
+		var elem = document.getElementById("progressBar");
+		document.getElementById('huntButton').style.backgroundColor = '#d1d1d1';
+		var width = 1;
+		var id = setInterval(frame, frameTime);
+		function frame() {
+				if (width >= 100) {
+				clearInterval(id);
+		    intRepeat = 0;
+			} else {
+				width++;
+				elem.style.width = width + "%";
+			}
+		}
+	}
+}
 
 
 function buySword(objHide, objShow) {
@@ -262,7 +285,6 @@ function buyGripSelf(objHide, objShow) {
 	} else if (leather < 10) {
 		addLog('Not enough leather')
 	} else if (credits >= 20 && leather >= 10) {
-		levelThree();
 		objHide.style.display = 'none';
 		credits = credits - 20;
 		leather = leather - 10;
@@ -270,6 +292,7 @@ function buyGripSelf(objHide, objShow) {
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('leather').innerHTML = leather;
 		addLog('Leather grip added to the wooden sword');
+		frameTime = 40;
 	}
 }
 function buyTrap(showOne, showTwo) {
@@ -279,7 +302,7 @@ function buyTrap(showOne, showTwo) {
 		credits = credits - trapPrice;
 		trapNum = trapNum + 1;
 		trapBought = trapBought + 1;
-		trapPrice = Math.ceil(trapPrice * 1.15);
+		trapPrice = Math.ceil(25 * Math.pow(1.15, trapBought));
 		document.getElementById('credits').innerHTML = credits;
 		if (trapBought > 0 && ropeLength == 0) {
 			document.getElementById('buyRopeOne').style.display = 'block';
@@ -879,8 +902,12 @@ function loadGame() {
 
 	if (level == 3 && waitTime == 5000) {
 		document.getElementById('buyGripSelf').style.display = 'block';
+		frameTime = 50;
 	} else {
 		document.getElementById('buyGripSelf').style.display = 'none';
+		if (waitTime == 4000) {
+			frameTime = 40;
+		}
 	}
 	document.getElementById('credits').innerHTML = credits;
 	document.getElementById('leather').innerHTML = leather;

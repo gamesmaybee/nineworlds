@@ -194,6 +194,25 @@ legend {
 	animation: boxShadowNone 0.1s;
 	box-shadow: none;
 }
+#huntButton {
+	padding: 0;
+	display: flex;
+	flex-direction: row-reverse;
+	background-color: #fff;
+}
+#progressBar {
+	background-color: #fff;
+	width: 0%;
+	height: 32.5px;
+}
+#huntText {
+	position: absolute;
+	align-self: center;
+	width: 198px;
+	text-align: center;
+	color: black;
+}
+
 .main-div {
 	font-family: 'Montserrat';
 	border: 1px solid black;
