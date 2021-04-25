@@ -169,11 +169,12 @@ var ropeStrength = 0;
 var trapNum = 0;
 var trapPrice = 25;
 var trapBought = 0;
-var trapPercentNum = 10;
-var trapPercent = 10;
+var trapPercentNum = 20;
+var trapPercent = 5;
 var resourcesNum = 5;
 
 var huntNum = 'from 0 to 2';
+var sword = 'wooden';
 
 var level = 0;
 
@@ -294,6 +295,7 @@ function buyGripSelf(objHide, objShow) {
 	} else if (credits >= 20 && leather >= 10) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
+		document.getElementById('buyAlcGripSelf').style.display = 'inline-block';
 		credits = credits - 20;
 		leather = leather - 10;
 		waitTime = 4000;
@@ -304,7 +306,9 @@ function buyGripSelf(objHide, objShow) {
 	}
 }
 function buyBoneSword(objHide, objShow) {
-	if (credits < 75) {
+	if (credits < 75 && bones < 25) {
+		addLog('Not enough Sceattas and bones');
+	} else if (credits < 75) {
 		addLog('Not enough Sceattas');
 	} else if (bones < 25) {
 		addLog('Not enough bones')
@@ -315,10 +319,30 @@ function buyBoneSword(objHide, objShow) {
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('bones').innerHTML = bones;
 		addLog('You now have a bone sword');
+		sword = 'bone';
 		resourcesNum = 7;
 	}
 }
-
+function buyAlcGripSelf(objHide, objShow) {
+	if (credits < 50) {
+		addLog('Not enough Sceattas');
+	} else if (leather < 20) {
+		addLog('Not enough leather')
+	} else if (fur < 10) {
+		addLog('Not enough fur')
+	} else if (credits >= 50 && leather >= 20 && fur >= 10) {
+		objHide.style.display = 'none';
+		credits = credits - 50;
+		leather = leather - 20;
+		fur = fur - 10;
+		waitTime = 3000;
+		document.getElementById('credits').innerHTML = credits;
+		document.getElementById('leather').innerHTML = leather;
+		document.getElementById('fur').innerHTML = fur;
+		addLog('Alcantara grip added to the ' + sword + ' sword');
+		frameTime = 30;
+	}
+}
 
 
 function buyTrap(showOne, showTwo) {
@@ -328,7 +352,7 @@ function buyTrap(showOne, showTwo) {
 		credits = credits - trapPrice;
 		trapNum = trapNum + 1;
 		trapBought = trapBought + 1;
-		trapPrice = Math.ceil(25 * Math.pow(1.15, trapBought));
+		trapPrice = Math.ceil(25 * Math.pow(1.15, trapNum));
 		document.getElementById('credits').innerHTML = credits;
 		if (trapBought > 0 && ropeLength == 0) {
 			document.getElementById('buyRopeOne').style.display = 'block';
@@ -344,7 +368,7 @@ function buyTrap(showOne, showTwo) {
 		addLog('Trap bought and installed');
 	}
 	document.getElementById('buyTrap').innerText = trapPrice + ' Sceattas';
-	console.log(ropeLength + ' : ' + trapBought);
+	console.log(ropeLength + ' : ' + trapNum);
 }
 function buyRopeOne(objHide, objShow) {
 	if (fur < 20) {
@@ -427,8 +451,8 @@ function buyStrengthOne(objHide, objShow) {
 		ropeStrength = 1;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 5;
-		trapPercentNum = 20;
+		trapPercent = 2;
+		trapPercentNum = 50;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
@@ -442,8 +466,8 @@ function buyStrengthTwo(objHide, objShow) {
 		ropeStrength = 2;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 2;
-		trapPercentNum = 50;
+		trapPercent = 1;
+		trapPercentNum = 100;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
@@ -457,8 +481,8 @@ function buyStrengthThree(objHide, objShow) {
 		ropeStrength = 3;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 1;
-		trapPercentNum = 100;
+		trapPercent = 0.1;
+		trapPercentNum = 1000;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
@@ -472,8 +496,8 @@ function buyStrengthFour(objHide, objShow) {
 		ropeStrength = 4;
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		trapPercent = 0.1;
-		trapPercentNum = 1000;
+		trapPercent = 0.01;
+		trapPercentNum = 10000;
 		addLog('Ropes in all traps are now stronger');
 	}
 }
@@ -503,7 +527,7 @@ function sellOneMeat() {
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('meat').innerHTML = meat;
-		if (level == 1 && credits >= 10) {
+		if (level == 1 && credits >= 5) {
 			level = 2;
 			levelTwo();
 		}
@@ -520,7 +544,7 @@ function sellTenMeat() {
 			document.getElementById('balanceRow').style.display = 'block';
 			document.getElementById('credits').innerHTML = credits;
 			document.getElementById('meat').innerHTML = meat;
-			if (level == 1 && credits >= 10) {
+			if (level == 1 && credits >= 5) {
 				level = 2;
 				levelTwo();
 			}
@@ -532,7 +556,7 @@ function sellTenMeat() {
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('meat').innerHTML = meat;
-		if (level == 1 && credits >= 10) {
+		if (level == 1 && credits >= 5) {
 			level = 2;
 			levelTwo();
 		}
@@ -549,7 +573,7 @@ function sellHundMeat() {
 			document.getElementById('balanceRow').style.display = 'block';
 			document.getElementById('credits').innerHTML = credits;
 			document.getElementById('meat').innerHTML = meat;
-			if (level == 1 && credits >= 10) {
+			if (level == 1 && credits >= 5) {
 				level = 2;
 				levelTwo();
 			}
@@ -561,7 +585,7 @@ function sellHundMeat() {
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('meat').innerHTML = meat;
-		if (level == 1 && credits >= 10) {
+		if (level == 1 && credits >= 5) {
 			level = 2;
 			levelTwo();
 		}
@@ -577,7 +601,7 @@ function sellAllMeat() {
 		document.getElementById('balanceRow').style.display = 'block';
 		document.getElementById('credits').innerHTML = credits;
 		document.getElementById('meat').innerHTML = meat;
-		if (level == 1 && credits >= 10) {
+		if (level == 1 && credits >= 5) {
 			level = 2;
 			levelTwo();
 		}
@@ -795,9 +819,9 @@ function craftOneBait() {
 	if (meat < 1) {
 		addLog('You have no meat to craft the bait...');
 	} else {
-		addLog('One bait crafted');
+		addLog('Five bait crafted');
 		meat = meat - 1;
-		bait = bait + 1;
+		bait = bait + 5;
 		document.getElementById('meat').innerHTML = meat;
 		document.getElementById('bait').innerHTML = bait;
 	}
@@ -807,15 +831,15 @@ function craftTenBait() {
 		if (meat < 1) {
 			addLog('You have no meat to craft the bait...');
 		} else {
-			addLog(meat + ' bait crafted'); 
-			bait = bait + meat;
+			addLog((meat * 5) + ' bait crafted'); 
+			bait = bait + (meat * 5);
 			meat = 0;
 			document.getElementById('meat').innerHTML = meat;
 			document.getElementById('bait').innerHTML = bait;	
 		}
 	} else if (bones > 9) {
-		addLog('Ten bait crafted'); 
-		bait = bait + 10;
+		addLog('Fifty bait crafted'); 
+		bait = bait + 50;
 		meat = meat - 10;
 		document.getElementById('meat').innerHTML = meat;
 		document.getElementById('bait').innerHTML = bait;
@@ -826,15 +850,15 @@ function craftHundBait() {
 		if (meat < 1) {
 			addLog('You have no meat to craft the bait...');
 		} else {
-			addLog(meat + ' bait crafted'); 
-			bait = bait + meat;
+			addLog((meat * 5) + ' bait crafted'); 
+			bait = bait + (meat * 5);
 			meat = 0;
 			document.getElementById('meat').innerHTML = meat;
 			document.getElementById('bait').innerHTML = bait;	
 		}
 	} else if (bones > 99) {
-		addLog('Ten bait crafted'); 
-		bait = bait + 100;
+		addLog('500 bait crafted'); 
+		bait = bait + 500;
 		meat = meat - 100;
 		document.getElementById('meat').innerHTML = meat;
 		document.getElementById('bait').innerHTML = bait;
@@ -862,6 +886,7 @@ function loadGame() {
 	if (typeof savedGame.trapPercentNum !== "undefined") {trapPercentNum = savedGame.trapPercentNum;};
 	if (typeof savedGame.bait !== "undefined") {bait = savedGame.bait;};
 	if (typeof savedGame.resourcesNum !== "undefined") {resourcesNum = savedGame.resourcesNum;};
+	if (typeof savedGame.sword !== "undefined") {sword = savedGame.sword;};
 	if (level == 1) {
 		levelOne();
 	}
@@ -927,7 +952,7 @@ function loadGame() {
 	}
 
 
-	if (level == 3 && waitTime == 5000) {
+	if (level >= 3 && waitTime == 5000) {
 		document.getElementById('buyGripSelf').style.display = 'block';
 		frameTime = 50;
 	} else {
@@ -936,9 +961,18 @@ function loadGame() {
 			frameTime = 40;
 		}
 	}
+	if (level >= 3 && waitTime == 4000) {
+		document.getElementById('buyAlcGripSelf').style.display = 'inline-block';
+		frameTime = 40;
+	} else {
+		document.getElementById('buyAlcGripSelf').style.display = 'none';
+		if (waitTime == 3000) {
+			frameTime = 30;
+		}
+	}
 
-	if (resourcesNum == 5 && waitTime == 4000) {
-		document.getElementById('buyBoneSword').style.display = 'block';
+	if (resourcesNum == 5 && waitTime < 5000) {
+		document.getElementById('buyBoneSword').style.display = 'inline-block';
 	} else {
 		document.getElementById('buyBoneSword').style.display = 'none';
 	}
@@ -974,7 +1008,8 @@ function saveGame() {
 		trapPercentNum: trapPercentNum,
 		ropeStrength: ropeStrength,
 		bait: bait,
-		resourcesNum: resourcesNum
+		resourcesNum: resourcesNum,
+		sword: sword
 	}
 	localStorage.setItem('gameSave', JSON.stringify(gameSave));
 	addLog('Game saved');
@@ -1001,9 +1036,11 @@ function resetGame() {
 	trapNum = 0;
 	trapBought = 0;
 	trapPrice = 25;
-	trapPercentNum = 5;
-	trapPercent = 20;
+	trapPercentNum = 20;
+	trapPercent = 5;
 	bait = 0;
+	resourcesNum = 5;
+	sword = 'wooden';
 	document.getElementById('sellMeat').style.visibility = 'hidden';
 	document.getElementById('balanceRow').style.display = 'none';
 	document.getElementById('upgradesButton').style.visibility = 'hidden';
@@ -1109,6 +1146,7 @@ function checkTraps() {
 	} else if (trapsBroken > 1) {
 		addLog(trapsBroken + ' traps broke...');
 	} else if (trapsBroken == 0 && trapNum > 0) {};
+	trapPrice = Math.ceil(25 * Math.pow(1.15, trapNum));
 	document.getElementById('buyTrap').innerHTML = 'TRAP (' + trapNum + ')';
 }
 

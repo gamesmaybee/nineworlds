@@ -29,7 +29,7 @@
 				<button class="main-button" onmouseover="changeText(document.getElementById('huntText'), 'Gather Resources', '14px')" onmouseout="changeText(document.getElementById('huntText'), 'HUNT', '16px')" onclick="hunting()" id="huntButton"><span id="huntText">HUNT</span><div id="progressBar"></div></button>
 				<br>
 
-				<div class="main-div" onmouseover="showButtonMeat(this)" onmouseout=" hideButtonMeat(this)" id="sellMeat" style="margin-top: 30px;">
+				<div class="main-div" onmouseover="showButtonMeat(this)" onmouseout=" hideButtonMeat(this)" id="sellMeat" style="margin-top: 0px;">
 					<div class="name">TRADE MEAT</div>
 					<div class="xOne" style="display: none;" onclick="sellOneMeat()">x1</div>
 					<div class="xTen" style="display: none;" onclick="sellTenMeat()">x10</div>
@@ -61,11 +61,11 @@
 					<div class="allBone" style="display: none;" onclick="sellAllBone()">All</div>
 				</div>
 
-				<div class="main-div" onmouseover="showButtonBait(this)" onmouseout="hideButtonBait(this)" id="craftBait" style="margin-top: 30px;">
+				<div class="main-div" onmouseover="showButtonBait(this)" onmouseout="hideButtonBait(this)" id="craftBait" style="margin-top: 10px;">
 					<div class="nameBait">CRAFT BAIT</div>
-					<div class="xOneBait" style="display: none;" onclick="craftOneBait()">x1</div>
-					<div class="xTenBait" style="display: none;" onclick="craftTenBait()">x10</div>
-					<div class="xHundBait" style="display: none;" onclick="craftHundBait()">x100</div>
+					<div class="xOneBait" style="display: none;" onclick="craftOneBait()">x5</div>
+					<div class="xTenBait" style="display: none;" onclick="craftTenBait()">x50</div>
+					<div class="xHundBait" style="display: none;" onclick="craftHundBait()">x500</div>
 				</div>
 			</div>
 
@@ -74,6 +74,8 @@
 				<button class="main-button" onmouseover="changeText(this, '15 Sceattas', '14px'); changeText(document.getElementById('upgradesCaption'), 'A sword is better than a knife - Unlocks new resources', '16px')" onmouseout="changeText(this, 'SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buySword(this, document.getElementById('buyGripSelf'))" id="buySword">WOODEN SWORD</button>
 
 				<button class="main-button" onmouseover="changeText(this, '20 Sceattas, 10 leather', '14px'); changeText(document.getElementById('upgradesCaption'), 'A leather hilt is more comfortable than a wooden hilt - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'LEATHER GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyGripSelf(this, document.getElementById('buyBoneSword'))" id="buyGripSelf">LEATHER GRIP</button>
+
+				<button class="main-button" onmouseover="changeText(this, '50 Sceattas, 20 leather, 10 fur', '13px'); changeText(document.getElementById('upgradesCaption'), 'An alcantara grip is mor comfortable than a regular leather hilt - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'ALCANTARA GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyAlcGripSelf(this, 'not this')" id="buyAlcGripSelf">ALCANTARA GRIP</button>
 
 				<button class="main-button" onmouseover="changeText(this, '75 Sceattas, 25 bones', '14px'); changeText(document.getElementById('upgradesCaption'), 'Bones are stronger than wood - you get more resources in manual hunts', '16px')" onmouseout="changeText(this, 'BONE SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyBoneSword(this, 'not this')" id="buyBoneSword">BONE SWORD</button>
 			</div>
@@ -92,10 +94,10 @@
 				<button class="main-button" onmouseover="changeText(this, '1M Fur', '14px'); changeText(document.getElementById('toolsCaption'), 'The longer the rope, the more resources - All traps produce from 20 to 50 meat, leather, fur or bones per 10 seconds', '16px')" onmouseout="changeText(this, 'LONGEST ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyRopeFive(this, 'not this')" id="buyRopeFive">LONGEST ROPES</button>
 
 
-				<button class="main-button" onmouseover="changeText(this, '20 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 5% chance of breaking', '16px')" onmouseout="changeText(this, 'STRONG ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthOne(this, document.getElementById('buyStrengthTwo'))" id="buyStrengthOne">STRONG ROPES</button>
-				<button class="main-button" onmouseover="changeText(this, '100 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 2% chance of breaking', '16px')" onmouseout="changeText(this, 'STRONGER ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthTwo(this, document.getElementById('buyStrengthThree'))" id="buyStrengthTwo">STRONGER ROPES</button>
-				<button class="main-button" onmouseover="changeText(this, '1 000 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 1% chance of breaking', '16px')" onmouseout="changeText(this, 'VERY STRONG ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthThree(this, document.getElementById('buyStrengthFour'))" id="buyStrengthThree">VERY STRONG ROPES</button>
-				<button class="main-button" onmouseover="changeText(this, '100K leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 0.1% chance of breaking', '16px')" onmouseout="changeText(this, 'EVEN STRONGER ROPES', '14px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthFour(this, document.getElementById('buyStrengthFive'))" id="buyStrengthFour" style="font-size: 14px;">EVEN STRONGER ROPES</button>
+				<button class="main-button" onmouseover="changeText(this, '20 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 2% chance of breaking', '16px')" onmouseout="changeText(this, 'STRONG ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthOne(this, document.getElementById('buyStrengthTwo'))" id="buyStrengthOne">STRONG ROPES</button>
+				<button class="main-button" onmouseover="changeText(this, '100 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 1% chance of breaking', '16px')" onmouseout="changeText(this, 'STRONGER ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthTwo(this, document.getElementById('buyStrengthThree'))" id="buyStrengthTwo">STRONGER ROPES</button>
+				<button class="main-button" onmouseover="changeText(this, '1 000 leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 0.1% chance of breaking', '16px')" onmouseout="changeText(this, 'VERY STRONG ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthThree(this, document.getElementById('buyStrengthFour'))" id="buyStrengthThree">VERY STRONG ROPES</button>
+				<button class="main-button" onmouseover="changeText(this, '100K leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 0.01% chance of breaking', '16px')" onmouseout="changeText(this, 'EVEN STRONGER ROPES', '14px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthFour(this, document.getElementById('buyStrengthFive'))" id="buyStrengthFour" style="font-size: 14px;">EVEN STRONGER ROPES</button>
 				<button class="main-button" onmouseover="changeText(this, '1M leather', '14px'); changeText(document.getElementById('toolsCaption'), 'The stronger the rope, the less chance that it will break - All traps have a 0.0001% chance of breaking (if it breaks, you\'re unlucky)', '16px')" onmouseout="changeText(this, 'STRONGEST ROPES', '16px'); changeText(document.getElementById('toolsCaption'), 'Tools upgrade your buildings', '16px')" onclick="buyStrengthFive(this, 'not this')" id="buyStrengthFive">STRONGEST ROPES</button>
 			</div>
 		</div>
