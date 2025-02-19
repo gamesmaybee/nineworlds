@@ -299,7 +299,7 @@ function buyGripSelf(objHide, objShow) {
 	} else if (credits >= 20 && leather >= 10) {
 		objHide.style.display = 'none';
 		objShow.style.display = 'block';
-		document.getElementById('buyAlcGripSelf').style.display = 'inline-block';
+		document.getElementById('BuySoftLeatherGripSelf').style.display = 'inline-block';
 		credits = credits - 20;
 		leather = leather - 10;
 		waitTime = 4000;
@@ -327,7 +327,7 @@ function buyBoneSword(objHide, objShow) {
 		resourcesNum = 7;
 	}
 }
-function buyAlcGripSelf(objHide, objShow) {
+function BuySoftLeatherGripSelf(objHide, objShow) {
 	if (credits < 50) {
 		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else if (leather < 20) {
@@ -801,10 +801,10 @@ function loadGame() {
 		}
 	}
 	if (level >= 3 && waitTime == 4000) {
-		document.getElementById('buyAlcGripSelf').style.display = 'inline-block';
+		document.getElementById('BuySoftLeatherGripSelf').style.display = 'inline-block';
 		frameTime = 40;
 	} else {
-		document.getElementById('buyAlcGripSelf').style.display = 'none';
+		document.getElementById('BuySoftLeatherGripSelf').style.display = 'none';
 		if (waitTime == 3000) {
 			frameTime = 30;
 		}
