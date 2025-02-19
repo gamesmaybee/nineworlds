@@ -101,22 +101,28 @@ function showButtonBait(obj) {
 
 
 function addLog(log, colour, weight, width) {
-	var par = document.createElement("p");
-	par.style.color = colour
-	par.style.borderColor = colour
-	par.style.fontWeight = weight
-	par.style.borderWidth = width
-	var node = document.createTextNode(log);
-	par.appendChild(node);
+    var element = document.getElementById("logs");
+    var lastLog = element.lastElementChild;
 
-	var element = document.getElementById("logs");
-	// Here you can also use element.childNodes.length
-	const count = document.getElementById("logs").getElementsByTagName("p").length;
-	if (count >= 19) {
-	element.removeChild(element.childNodes[0]);
-	}
-	element.appendChild(par);
-};
+    if (lastLog && lastLog.textContent.endsWith(log)) {
+        // Extract existing count if present
+        var match = lastLog.textContent.match(/^\[x(\d+)\] /);
+        var count = match ? parseInt(match[1]) + 1 : 2;
+        lastLog.textContent = `[x${count}] ` + log;
+    } else {
+        var par = document.createElement("p");
+        par.style.color = colour;
+        par.style.borderColor = colour;
+        par.style.fontWeight = weight;
+        par.style.borderWidth = width;
+        par.textContent = log;
+
+        if (element.children.length >= 19) {
+            element.removeChild(element.firstChild);
+        }
+        element.appendChild(par);
+    }
+}
 
 setInterval(function() {
 	document.title = credits + " Sceattas - The 9 Worlds"
