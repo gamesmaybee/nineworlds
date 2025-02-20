@@ -1053,7 +1053,7 @@ function checkTraps() {
 			bait -= 1;
 		} else {
 			if (!bait_logged) {
-				addLog('You ran out of bait...', 'black', 'light', '1px');
+				addLog('You don\'t have any bait...', 'black', 'light', '1px');
 				bait_logged = true
 			}
 		}
