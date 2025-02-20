@@ -747,7 +747,7 @@ function sellAllBone() {
 
 function craftBait(num) {
 	if (meat < (num * 2) || bones < num) {
-		if (meat < 2 && bones < 1) {
+		if (meat < 1 && bones < 1) {
 			addLog('You have no meat or bones to craft the bait...', 'black', 'light', '1px');
 		} else if (meat < 1) {
 			addLog('You have no meat to craft the bait...', 'black', 'light', '1px');
@@ -769,7 +769,7 @@ function craftBait(num) {
 				meat -= (meatnum * 2);
 			}
 		}
-	} else if (meat * 2 > num && bones > num) {
+	} else if (meat >= (num * 2) && bones >= num) {
 		addLog((num * 10) + ' bait crafted', 'black', 'light', '1px');
 		bait += (10 * num);
 		meat -= (2 * num);
