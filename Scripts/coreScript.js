@@ -180,7 +180,7 @@ function addLog(log, colour, weight, width) {
 }
 
 setInterval(function() {
-	document.title = shortNum(sceattas) + " Sċeattas - The 9 Worlds"
+	document.title = shortNum(sceattas) + " Sceattas - The 9 Worlds"
 }, 500);
 
 setInterval(function() {
@@ -342,7 +342,7 @@ function loadBar() {
 
 function buySword(objHide, objShow) {
 	if (sceattas < 15) {
-		addLog('Not enough Sċeattas', 'black', 'light', '1px');
+		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else {
 		levelThree();
 		objHide.style.display = 'none';
@@ -354,7 +354,7 @@ function buySword(objHide, objShow) {
 }
 function buyGripSelf(objHide, objShow) {
 	if (sceattas < 20) {
-		addLog('Not enough Sċeattas', 'black', 'light', '1px');
+		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else if (leather < 10) {
 		addLog('Not enough leather', 'black', 'light', '1px')
 	} else if (sceattas >= 20 && leather >= 10) {
@@ -372,9 +372,9 @@ function buyGripSelf(objHide, objShow) {
 }
 function buyBoneSword(objHide, objShow) {
 	if (sceattas < 75 && bones < 25) {
-		addLog('Not enough Sċeattas and bones', 'black', 'light', '1px');
+		addLog('Not enough Sceattas and bones', 'black', 'light', '1px');
 	} else if (sceattas < 75) {
-		addLog('Not enough Sċeattas', 'black', 'light', '1px');
+		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else if (bones < 25) {
 		addLog('Not enough bones', 'black', 'light', '1px')
 	} else if (sceattas >= 75 && bones >= 25) {
@@ -390,7 +390,7 @@ function buyBoneSword(objHide, objShow) {
 }
 function BuySoftLeatherGripSelf(objHide, objShow) {
 	if (sceattas < 50) {
-		addLog('Not enough Sċeattas', 'black', 'light', '1px');
+		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else if (leather < 20) {
 		addLog('Not enough leather', 'black', 'light', '1px')
 	} else if (fur < 10) {
@@ -412,7 +412,7 @@ function BuySoftLeatherGripSelf(objHide, objShow) {
 
 function buyTrap(showOne, showTwo) {
 	if (sceattas < trapPrice) {
-		addLog('Not enough Sċeattas', 'black', 'light', '1px');
+		addLog('Not enough Sceattas', 'black', 'light', '1px');
 	} else {
 		sceattas = sceattas - trapPrice;
 		trapNum = trapNum + 1;
@@ -432,7 +432,7 @@ function buyTrap(showOne, showTwo) {
 		}
 		addLog('Trap bought and installed', 'black', 'light', '1px');
 	}
-	document.getElementById('buyTrap').innerText = shortNum(trapPrice) + ' Sċeattas';
+	document.getElementById('buyTrap').innerText = shortNum(trapPrice) + ' Sceattas';
 	console.log(ropeLength + ' : ' + trapNum);
 }
 function buyRopeOne(objHide, objShow) {
