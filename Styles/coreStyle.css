@@ -102,6 +102,9 @@ body {
 	min-width: 175px;
 	max-width: 175px;
 }
+.right-cell span {
+	user-select: none;
+}
 .left-cell {
 	min-width: 100px;
 	max-width: 100px;

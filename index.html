@@ -72,18 +72,18 @@
 
 			<div id="upgrades" class="tabcontent">
 				<div id="upgradesCaption">Upgrades upgrade your manual hunts</div>
-				<button class="main-button" onmouseover="changeText(this, '15 Sceattas', '14px'); changeText(document.getElementById('upgradesCaption'), 'A sword is better than a knife - Unlocks new resources', '16px')" onmouseout="changeText(this, 'SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buySword(this, document.getElementById('buyGripSelf'))" id="buySword">WOODEN SWORD</button>
+				<button class="main-button" onmouseover="changeText(this, '15 Sċeattas', '14px'); changeText(document.getElementById('upgradesCaption'), 'A sword is better than a knife - Unlocks new resources', '16px')" onmouseout="changeText(this, 'SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buySword(this, document.getElementById('buyGripSelf'))" id="buySword">WOODEN SWORD</button>
 
-				<button class="main-button" onmouseover="changeText(this, '20 Sceattas, 10 leather', '14px'); changeText(document.getElementById('upgradesCaption'), 'A leather hilt is more comfortable than a wooden hilt - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'LEATHER GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyGripSelf(this, document.getElementById('buyBoneSword'))" id="buyGripSelf">LEATHER GRIP</button>
+				<button class="main-button" onmouseover="changeText(this, '20 Sċeattas, 10 leather', '14px'); changeText(document.getElementById('upgradesCaption'), 'A leather hilt is more comfortable than a wooden hilt - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'LEATHER GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyGripSelf(this, document.getElementById('buyBoneSword'))" id="buyGripSelf">LEATHER GRIP</button>
 
-				<button class="main-button" onmouseover="changeText(this, '50 Sceattas, 20 leather, 10 fur', '13px'); changeText(document.getElementById('upgradesCaption'), 'Softer leather grip is more comfortable than regular leather grip - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'SOFT LEATHER GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="BuySoftLeatherGripSelf(this, 'not this')" id="BuySoftLeatherGripSelf">SOFT LEATHER GRIP</button>
+				<button class="main-button" onmouseover="changeText(this, '50 Sċeattas, 20 leather, 10 fur', '13px'); changeText(document.getElementById('upgradesCaption'), 'Softer leather grip is more comfortable than regular leather grip - Decreases hunting time by 1 second', '16px')" onmouseout="changeText(this, 'SOFT LEATHER GRIP', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="BuySoftLeatherGripSelf(this, 'not this')" id="BuySoftLeatherGripSelf">SOFT LEATHER GRIP</button>
 
-				<button class="main-button" onmouseover="changeText(this, '75 Sceattas, 25 bones', '14px'); changeText(document.getElementById('upgradesCaption'), 'Bones are stronger than wood - you get more resources in manual hunts', '16px')" onmouseout="changeText(this, 'BONE SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyBoneSword(this, 'not this')" id="buyBoneSword">BONE SWORD</button>
+				<button class="main-button" onmouseover="changeText(this, '75 Sċeattas, 25 bones', '14px'); changeText(document.getElementById('upgradesCaption'), 'Bones are stronger than wood - you get more resources in manual hunts', '16px')" onmouseout="changeText(this, 'BONE SWORD', '16px'); changeText(document.getElementById('upgradesCaption'), 'Upgrades upgrade your manual hunts', '16px')" onclick="buyBoneSword(this, 'not this')" id="buyBoneSword">BONE SWORD</button>
 			</div>
 
 			<div id="buildings" class="tabcontent">
 				<div id="buildingsCaption">Buildings gather resources for you</div>
-				<button class="main-button" onmouseover="changeText(this, trapPrice + ' Sceattas', '14px'); changeText(document.getElementById('buildingsCaption'), 'Traps and kills any animals that come close to your base - ' + huntNum + ' meat, leather, fur or bones per 10 seconds (' + trapPercent + '% chance of breaking when used)', '15px')" onmouseout="changeText(this, 'TRAP (' + trapNum + ')', '16px'); changeText(document.getElementById('buildingsCaption'), 'Buildings gather resources for you', '16px')" onclick="buyTrap(document.getElementById('buyRopeOne'), document.getElementById('buyStrengthOne'))" id="buyTrap">TRAP</button>
+				<button class="main-button" onmouseover="changeText(this, shortNum(trapPrice) + ' Sċeattas', '14px'); changeText(document.getElementById('buildingsCaption'), 'Traps and kills any animals that come close to your base - ' + huntNum + ' meat, leather, fur or bones per 10 seconds (' + trapPercent + '% chance of breaking when used)', '15px')" onmouseout="changeText(this, 'TRAP (' + trapNum + ')', '16px'); changeText(document.getElementById('buildingsCaption'), 'Buildings gather resources for you', '16px')" onclick="buyTrap(document.getElementById('buyRopeOne'), document.getElementById('buyStrengthOne'))" id="buyTrap">TRAP</button>
 			</div>
 
 			<div id="tools" class="tabcontent">
@@ -109,24 +109,24 @@
 				<legend>MAIN ITEMS</legend>
 				<table id="resTable" style="visibility: hidden;">
 					<tr id="balanceRow" style="display: none;">
-						<td class="left-cell">Sceattas</td>
-						<td class="right-cell" id="sceattas"></td>
+						<td class="left-cell">Sċeattas</td>
+						<td class="right-cell"><span id="sceattas" onmouseover="this.innerHTML = longNum(sceattas)" onmouseout="this.innerHTML = shortNum(sceattas)"></span></td>
 					</tr>
 					<tr id="meatRow" style="display: none;">
 						<td class="left-cell">Meat</td>
-						<td class="right-cell" id="meat"></td>
+						<td class="right-cell"><span id="meat" onmouseover="this.innerHTML = longNum(meat)" onmouseout="this.innerHTML = shortNum(meat)"></span></td>
 					</tr>
 					<tr id="furRow" style="display: none;">
 						<td class="left-cell">Fur</td>
-						<td class="right-cell" id="fur"></td>
+						<td class="right-cell"><span id="fur" onmouseover="this.innerHTML = longNum(fur)" onmouseout="this.innerHTML = shortNum(fur)"></span></td>
 					</tr>
 					<tr id="leatherRow" style="display: none;">
 						<td class="left-cell">Leather</td>
-						<td class="right-cell" id="leather"></td>
+						<td class="right-cell"><span id="leather" onmouseover="this.innerHTML = longNum(leather)" onmouseout="this.innerHTML = shortNum(leather)"></span></td>
 					</tr>
 					<tr id="boneRow" style="display: none;">
 						<td class="left-cell">Bones</td>
-						<td class="right-cell" id="bones"></td>
+						<td class="right-cell"><span id="bones" onmouseover="this.innerHTML = longNum(bones)" onmouseout="this.innerHTML = shortNum(bones)"></span></td>
 					</tr>
 				</table>
 			</fieldset>
@@ -136,7 +136,7 @@
 				<table id="craftTable" style="visibility: hidden;">
 					<tr id="baitRow" style="display: none;">
 						<td class="left-cell">Bait</td>
-						<td class="right-cell" id="bait"></td>
+						<td class="right-cell"><span id="bait" onmouseover="this.innerHTML = longNum(bait)" onmouseout="this.innerHTML = shortNum(bait)"></span></td>
 					</tr>
 				</table>
 			</fieldset>
